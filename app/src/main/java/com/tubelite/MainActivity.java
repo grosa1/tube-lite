@@ -22,7 +22,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        
+
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
 
@@ -31,10 +31,12 @@ public class MainActivity extends AppCompatActivity {
         // Force links and redirects to open in the WebView instead of in a browser
         mWebView.setWebViewClient(new WebViewClient());
 
-        // Enable Javascript
+        // SETTINGS
         WebSettings webSettings = mWebView.getSettings();
         mWebView.getSettings().setDomStorageEnabled(true);
         webSettings.setJavaScriptEnabled(true);
+        webSettings.setAppCachePath(getCacheDir().getAbsolutePath());
+        webSettings.setAppCacheEnabled(true);
 
         // REMOTE RESOURCE
         mWebView.setWebViewClient(new MyWebViewClient());
